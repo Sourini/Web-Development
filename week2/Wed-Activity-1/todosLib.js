@@ -3,7 +3,7 @@ let nextId = 1;
 
 function addOne(task, completed, dueDate) {
     // Check if any parameter is empty or undefined
-    if (!task || !dueDate) {
+    if (!task || !dueDate || !completed) {
         return false;
     }
 
@@ -53,16 +53,16 @@ function deleteOneById(id) {
 
 if (require.main === module) {
     // Add todos
-    let result = addOne("Buy groceries", false, "2023-10-15");
+    let result = addOne("Buy groceries", "false", "2023-10-15");
     console.log(result);
-    result = addOne("Clean", false, "2023-10-16");
+    result = addOne("Clean", "false", "2023-10-16");
     console.log(result);
 
     console.log("getAll called:", getAll());
 
     console.log("findById called:", findById(1));
 
-    console.log("updateOneById called:", updateOneById(1, { task: "Shower", completed: true, dueDate: "2024-10-17" }));
+    console.log("updateOneById called:", updateOneById(1, { task: "Shower", completed: "true", dueDate: "2024-10-17" }));
     console.log("findById called after item updated:", findById(1));
 
     console.log("deleteOneById called:", deleteOneById(1));
